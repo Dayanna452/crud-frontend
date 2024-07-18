@@ -23,7 +23,7 @@ export const buttonClasses = {
 
 export const Button = ({ ...props }: Button) => {
   return (
-    <button className={cls(classes)} {...props}>
+    <button {...props}>
       {props.children}
     </button>
   )
