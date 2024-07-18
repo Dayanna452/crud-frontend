@@ -1,8 +1,8 @@
-import { cls } from "app/utils/constans"
+import { cls } from 'app/utils/constans'
+import { ButtonProps, ButtonClassesProps } from './button.interface'
 
-interface Button extends React.HTMLAttributes<HTMLButtonElement> {}
 
-export const buttonClasses = {
+export const buttonClasses: ButtonClassesProps = {
   base: 'focus:outline-none transition ease-in-out duration-300',
   disabled: 'opacity-50 cursor-not-allowed',
   pill: 'rounded-full',
@@ -21,9 +21,26 @@ export const buttonClasses = {
   }
 }
 
-export const Button = ({ ...props }: Button) => {
+export const Button = ({
+  size,
+  pill,
+  variant,
+  disabled,
+  className,
+  ...props
+}: ButtonProps) => {
   return (
-    <button {...props}>
+    <button
+      className={cls(`
+      ${buttonClasses.base}
+      ${buttonClasses.size[size || 'normal']}
+      ${buttonClasses.variant[variant || 'primary']}
+      ${pill && buttonClasses.pill}
+      ${disabled && buttonClasses.disabled}
+      ${className}
+  `)}
+      {...props}
+    >
       {props.children}
     </button>
   )
