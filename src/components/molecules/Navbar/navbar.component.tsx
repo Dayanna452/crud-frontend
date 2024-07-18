@@ -7,7 +7,7 @@ const classesNavbar = {
 
 export const Navbar = () => {
   return (
-    <nav className='relative flex w-full flex-wrap items-center justify-between bg-neutral-700 py-2 shadow-dark-mild lg:py-4'>
+    <nav className='relative flex w-full flex-wrap items-center justify-between bg-neutral-400 py-2 shadow-dark-mild lg:py-4'>
       <div className='flex w-full flex-wrap items-center justify-between px-3'>
         <div>
           <Link
