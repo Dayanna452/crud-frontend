@@ -1,8 +1,10 @@
-import React from 'react'
+import { Table } from '../organisms/Table/table.component'
 import { Wrapper } from '../templates/Wrapper/wrapper.component'
 
 export const HomePage = () => {
   return (
-    <Wrapper>home</Wrapper>
+    <Wrapper>
+      <Table />
+    </Wrapper>
   )
 }
