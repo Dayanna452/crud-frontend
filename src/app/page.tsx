@@ -1,8 +1,7 @@
-import { HomePage } from "app/components/pages/HomePage";
-import Image from "next/image";
+import { LoginPage } from "app/components/pages/LoginPage";
 
 export default function Home() {
   return (
-    <HomePage />
+    <LoginPage />
   );
 }
