@@ -11,7 +11,7 @@ export const Navbar = () => {
         <div>
           <a className='mx-2 my-1 flex items-center lg:mb-0 lg:mt-0' href='#'>
             <Image
-              src='/vercel.svg'
+              src='/home-icon.svg'
               width={100}
               height={40}
               alt='Picture of the author'
