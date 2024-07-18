@@ -1,3 +1,4 @@
+import { TableBody } from "app/components/molecules/TableBody/tablebody.component"
 import { TableHeader } from "app/components/molecules/TableHeader/tableheader.component"
 
 export const Table = () => {
@@ -8,26 +9,7 @@ export const Table = () => {
           <div className='overflow-hidden'>
             <table className='min-w-full text-left text-sm font-light text-surface text-gray-600'>
               <TableHeader columns={['#', 'First Name', 'Last Name', 'Username']} />
-              <tbody>
-                <tr className='border-b border-white/10'>
-                  <td className='whitespace-nowrap px-6 py-4 font-medium'>1</td>
-                  <td className='whitespace-nowrap px-6 py-4'>Mark</td>
-                  <td className='whitespace-nowrap px-6 py-4'>Otto</td>
-                  <td className='whitespace-nowrap px-6 py-4'>@mdo</td>
-                </tr>
-                <tr className='border-b border-white/10'>
-                  <td className='whitespace-nowrap px-6 py-4 font-medium'>2</td>
-                  <td className='whitespace-nowrap px-6 py-4'>Jacob</td>
-                  <td className='whitespace-nowrap px-6 py-4'>Thornton</td>
-                  <td className='whitespace-nowrap px-6 py-4'>@fat</td>
-                </tr>
-                <tr className='border-b border-white/10'>
-                  <td className='whitespace-nowrap px-6 py-4 font-medium'>3</td>
-                  <td className='whitespace-nowrap px-6 py-4'>Larry</td>
-                  <td className='whitespace-nowrap px-6 py-4'>Wild</td>
-                  <td className='whitespace-nowrap px-6 py-4'>@twitter</td>
-                </tr>
-              </tbody>
+              <TableBody />
             </table>
           </div>
         </div>
