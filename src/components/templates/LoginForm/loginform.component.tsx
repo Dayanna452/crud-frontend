@@ -1,10 +1,14 @@
-import { Button } from "app/components/atoms/Button"
+'use-client'
+import { Button } from 'app/components/atoms/Button'
+import Link from 'next/link'
 
 export const LoginForm = () => {
   return (
     <div>
       <h3>CRUD APP</h3>
-      <Button>Log in</Button>
+      <Link href='/list'>
+        <Button>Log in</Button>
+      </Link>
     </div>
   )
 }
