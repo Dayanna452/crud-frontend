@@ -9,7 +9,7 @@ export const Table = () => {
           <div className='overflow-hidden'>
             <table className='min-w-full text-left text-sm font-light text-surface text-gray-600'>
               <TableHeader columns={['#', 'First Name', 'Last Name', 'Username']} />
-              <TableBody />
+              <TableBody rows={[]} />
             </table>
           </div>
         </div>
