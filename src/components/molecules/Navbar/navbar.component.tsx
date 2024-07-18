@@ -1,4 +1,4 @@
-import { Button } from 'app/components/atoms/Button'
+import { Button } from '../../atoms/Button'
 
 export const Navbar = () => {
   return (
