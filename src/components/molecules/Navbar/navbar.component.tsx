@@ -2,12 +2,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const classesNavbar = {
-  nav: 'relative flex w-full flex-wrap items-center justify-between bg-zinc-50 py-2 shadow-dark-mild dark:bg-neutral-700 lg:py-4'
+  nav: 'relative flex w-full flex-wrap items-center justify-between bg-zinc-50 py-2 shadow-dark-mild lg:py-4'
 }
 
 export const Navbar = () => {
   return (
-    <nav className='relative flex w-full flex-wrap items-center justify-between bg-zinc-50 py-2 shadow-dark-mild dark:bg-neutral-700 lg:py-4'>
+    <nav className='relative flex w-full flex-wrap items-center justify-between bg-neutral-700 py-2 shadow-dark-mild lg:py-4'>
       <div className='flex w-full flex-wrap items-center justify-between px-3'>
         <div>
           <Link
