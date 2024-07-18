@@ -12,7 +12,7 @@ export const Navbar = () => {
         <div>
           <Link
             href='/'
-            className='mx-2 my-1 flex items-center lg:mb-0 lg:mt-0'
+            className='mx-2 my-1 flex justify-center items-center lg:mb-0 lg:mt-0'
           >
             <Image
               src='/home-icon.svg'
