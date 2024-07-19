@@ -1,3 +1,4 @@
+"use client"
 import { useMutation, useQuery } from '@apollo/client'
 import { LOGIN } from 'app/graphql/mutations/auth'
 import { ADD_USER, DELETE_USER, UPDATE_USER } from 'app/graphql/mutations/user'

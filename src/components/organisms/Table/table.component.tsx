@@ -3,7 +3,7 @@ import { TableHeader } from 'app/components/molecules/TableHeader/tableheader.co
 
 interface TableProps {
   columns: string[]
-  rows: string[]
+  rows: any[]
 }
 
 export const Table = ({ columns, rows }: TableProps) => {

@@ -1,13 +1,16 @@
 interface TableBodyProps {
-  rows: string[] | number[]
+  rows: any[]
 }
 
 export const TableBody = ({ rows }: TableBodyProps) => {
+  console.log('rows', rows)
   return (
     <tbody>
       {rows.map((row, index) => (
-        <tr key={index} className='border-b border-white/10'>
-          <td className='whitespace-nowrap px-6 py-4 font-medium'>{row}</td>
+        <tr key={index}>
+          {Object.keys(row).map((key, index) => (
+            <td key={index}>{row[key]}</td>
+          ))}
         </tr>
       ))}
     </tbody>
