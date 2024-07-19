@@ -1,5 +1,6 @@
 export interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   disabled?: boolean
+  onClick?: ((data:any) => void) | undefined
   size?: 'small' | 'normal' | 'large'
   variant?: 'primary' | 'secondary' | 'danger'
   pill?: boolean

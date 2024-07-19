@@ -1,7 +1,6 @@
 import { cls } from 'app/utils/constans'
 import { ButtonProps, ButtonClassesProps } from './button.interface'
 
-
 export const buttonClasses: ButtonClassesProps = {
   base: 'focus:outline-none transition ease-in-out duration-300',
   disabled: 'opacity-50 cursor-not-allowed',
@@ -24,6 +23,7 @@ export const buttonClasses: ButtonClassesProps = {
 export const Button = ({
   size,
   pill,
+  onClick,
   variant,
   disabled,
   className,
@@ -31,6 +31,7 @@ export const Button = ({
 }: ButtonProps) => {
   return (
     <button
+      onClick={onClick}
       className={cls(`
       ${buttonClasses.base}
       ${buttonClasses.size[size || 'normal']}

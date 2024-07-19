@@ -4,17 +4,28 @@ import { TableHeader } from 'app/components/molecules/TableHeader/tableheader.co
 interface TableProps {
   columns: string[]
   rows: any[]
+  deleteButton?: (id:string) => void
+  updateButton?: (formData: FormData) => void
 }
 
-export const Table = ({ columns, rows }: TableProps) => {
+export const Table = ({
+  columns,
+  rows,
+  deleteButton,
+  updateButton
+}: TableProps) => {
   return (
     <div className='flex flex-col'>
-      <div className='overflow-x-auto sm:-mx-6 lg:-mx-8'>
-        <div className='inline-block min-w-full py-6 sm:px-6 lg:px-8'>
+      <div className='overflow-x-auto'>
+        <div className='inline-block min-w-full py-6'>
           <div className='overflow-hidden'>
             <table className='min-w-full text-left text-sm font-light text-surface text-gray-600'>
               <TableHeader columns={columns} />
-              <TableBody rows={rows} />
+              <TableBody
+                rows={rows}
+                deleteButton={deleteButton}
+                updateButton={updateButton}
+              />
             </table>
           </div>
         </div>
