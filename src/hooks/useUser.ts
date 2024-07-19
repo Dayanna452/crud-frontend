@@ -1,54 +1,87 @@
-import { useMutation } from '@apollo/client'
+import { useMutation, useQuery } from '@apollo/client'
 import { LOGIN } from 'app/graphql/mutations/auth'
 import { ADD_USER, DELETE_USER, UPDATE_USER } from 'app/graphql/mutations/user'
+import { GET_USER, GET_USERS } from 'app/graphql/queries/user'
 import { AuthForm } from 'app/types/auth'
 import { redirect } from 'next/navigation'
 
 export const useUser = () => {
+  const { data: user, error: errUser, loading: ldUser } = useQuery(GET_USER)
+  const {
+    data: allUsers,
+    error: errUsers,
+    loading: ldUsers
+  } = useQuery(GET_USERS)
   const [loginFn, loginVar] = useMutation(LOGIN)
   const [addUserFn, addUserVar] = useMutation(ADD_USER)
   const [updateUserFn, updateUserVar] = useMutation(UPDATE_USER)
   const [deleteUserFn, deleteUserVar] = useMutation(DELETE_USER)
-  const handleCreateUser = async (formData: FormData) => {
-    const formDataObject = Object.fromEntries(formData)
-    delete formDataObject['password_confirmation']
 
-  }
-
-  
   const handleLogin = async (formData: AuthForm) => {
     try {
-      await loginFn({ variables: { email: formData.username, password: formData.password } })
-      //console.log('data', data)
+      await loginFn({
+        variables: { email: formData.username, password: formData.password }
+      })
       if (loginVar.data['access_token']) redirect('/list')
     } catch (error) {
       console.log(error)
     }
   }
 
+  const handleAddUser = async (formData: FormData) => {
+    try {
+      await addUserFn({ variables: { formData } })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleUpdateUser = async (formData: FormData) => {
+    try {
+      await updateUserFn({ variables: { formData } })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleDeleteUser = async (id: string) => {
+    try {
+      await deleteUserFn({ variables: { id } })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   return {
-    handleCreateUser,
+    user,
+    allUsers,
+    ldUser,
+    ldUsers,
+    errUser,
+    errUsers,
     handleLogin,
-    login:{
+    handleAddUser,
+    handleUpdateUser,
+    handleDeleteUser,
+    login: {
       loading: loginVar.loading,
       error: loginVar.error,
       data: loginVar.data
     },
-    addUser:{
+    addUser: {
       loading: addUserVar.loading,
       error: addUserVar.error,
       data: addUserVar.data
     },
-    updateUser:{
+    updateUser: {
       loading: updateUserVar.loading,
       error: updateUserVar.error,
       data: updateUserVar.data
     },
-    deleteUser:{
+    deleteUser: {
       loading: deleteUserVar.loading,
       error: deleteUserVar.error,
       data: deleteUserVar.data
     }
-    
   }
 }

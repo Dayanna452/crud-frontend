@@ -6,7 +6,6 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 export const LoginForm = () => {
-  console.log('env', process.env.API_URL)
   const { handleLogin } = useUser()
   const [user, setUser] = useState({ username: '', password: '' })
 
@@ -32,9 +31,7 @@ export const LoginForm = () => {
         value={user.password}
         onChange={e => setUser({ ...user, password: e.target.value })}
       />
-      <Link href='/list'>
-        <Button onClick={e => handleSubmit(e)}>Log in</Button>
-      </Link>
+        <Button pill onClick={e => handleSubmit(e)}>Log in</Button>
     </div>
   )
 }

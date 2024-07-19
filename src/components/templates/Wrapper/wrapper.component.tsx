@@ -1,13 +1,13 @@
 import { Footer } from 'app/components/molecules/Footer/footer.component'
 import { Navbar } from 'app/components/molecules/Navbar/navbar.component'
 
-interface WrapperProps {
+interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode
 }
 
-export const Wrapper = ({ children }: WrapperProps) => {
+export const Wrapper = ({ children, ...props }: WrapperProps) => {
   return (
-    <div>
+    <div {...props}>
       <Navbar />
       {children}
       <Footer />
