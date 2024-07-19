@@ -1,6 +1,6 @@
 'use client'
 
-import { ApolloClient, ApolloLink, HttpLink } from '@apollo/client'
+import { ApolloLink, HttpLink } from '@apollo/client'
 import {
   ApolloNextAppProvider,
   NextSSRApolloClient,
@@ -8,9 +8,9 @@ import {
   SSRMultipartLink
 } from '@apollo/experimental-nextjs-app-support/ssr'
 
-function makeClient () {
+const makeClient = () => {
   const httpLink = new HttpLink({
-    uri: 'put your api endpoint here'
+    uri: process.env.API_URL
   })
 
   return new NextSSRApolloClient({
