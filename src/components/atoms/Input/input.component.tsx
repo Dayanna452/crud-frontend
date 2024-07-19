@@ -1,14 +1,21 @@
 import { InputProps } from './input.interface'
 
-export const Input = ({ label, placeholder='placdeholder',value, id, type, ...props }: InputProps) => {
+export const Input = ({
+  label,
+  value,
+  id,
+  type,
+  placeholder = 'placdeholder',
+  ...props
+}: InputProps) => {
   return (
     <div className='relative mb-3'>
       <input
-        type={type}
-        className='peer m-0 block h-[58px] w-full rounded border border-solid border-secondary-500 bg-transparent bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-700 transition duration-200 ease-linear placeholder:text-transparent focus:border-primary focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:outline-none peer-focus:text-primary dark:border-neutral-400 dark:text-white dark:autofill:shadow-autofill dark:focus:border-primary dark:peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem]'
         id={id}
+        type={type}
         value={value}
         placeholder={placeholder}
+        className='peer m-0 block h-[58px] w-full rounded-lg border bg-transparent bg-clip-padding px-3 py-4 text-base font-normal leading-tight text-neutral-700 transition duration-200 ease-linear placeholder:text-transparent focus:border-sky-500 focus:shadow-md focus:pb-[0.625rem] focus:pt-[1.625rem] focus:text-neutral-700 focus:outline-none peer-focus:text-primary border-neutral-300 dark:text-white dark:autofill:shadow-autofill dark:focus:border-primary dark:peer-focus:text-primary [&:not(:placeholder-shown)]:pb-[0.625rem] [&:not(:placeholder-shown)]:pt-[1.625rem]'
         {...props}
       />
       <label
