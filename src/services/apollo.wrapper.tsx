@@ -1,36 +1,39 @@
-'use client'
+"use client";
 
-import { ApolloLink, HttpLink } from '@apollo/client'
+import { ApolloLink, HttpLink } from "@apollo/client";
 import {
   ApolloNextAppProvider,
-  NextSSRApolloClient,
-  NextSSRInMemoryCache,
-  SSRMultipartLink
-} from '@apollo/experimental-nextjs-app-support/ssr'
+  InMemoryCache,
+  ApolloClient,
+  SSRMultipartLink,
+} from "@apollo/experimental-nextjs-app-support";
+import { setVerbosity } from "ts-invariant";
 
-const makeClient = () => {
+setVerbosity("debug");
+
+function makeClient() {
   const httpLink = new HttpLink({
-    uri: process.env.API_URL
-  })
+    uri: "https://crud-backend-lhfw.onrender.com/graphql",
+  });
 
-  return new NextSSRApolloClient({
-    cache: new NextSSRInMemoryCache(),
+  return new ApolloClient({
+    cache: new InMemoryCache(),
     link:
-      typeof window === 'undefined'
+      typeof window === "undefined"
         ? ApolloLink.from([
             new SSRMultipartLink({
-              stripDefer: true
+              stripDefer: true,
             }),
-            httpLink
+            httpLink,
           ])
-        : httpLink
-  })
+        : httpLink,
+  });
 }
 
-export function ApolloWrapper ({ children }: React.PropsWithChildren) {
+export function ApolloWrapper({ children }: React.PropsWithChildren) {
   return (
     <ApolloNextAppProvider makeClient={makeClient}>
       {children}
     </ApolloNextAppProvider>
-  )
+  );
 }

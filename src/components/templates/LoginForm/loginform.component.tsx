@@ -6,14 +6,13 @@ import Link from 'next/link'
 import { useState } from 'react'
 
 export const LoginForm = () => {
+  console.log('env', process.env.API_URL)
   const { handleLogin } = useUser()
   const [user, setUser] = useState({ username: '', password: '' })
 
-  const handleSubmit = async (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
+  const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault()
-    await handleLogin(user)
+    handleLogin(user)
   }
 
   return (
