@@ -13,10 +13,6 @@ export const HomePage = () => {
     allUsers,
     user
   } = useUser()
-  const data = [
-    { id: '1', name: 'danna', email: 'danna@gmail.com', role: 'admin' }
-  ]
-  console.log('users', allUsers?.users)
 
   const newAllUsers = allUsers?.users.map((user: any) => {
     const { id, name, email, role } = user

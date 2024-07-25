@@ -4,9 +4,10 @@ import { LOGIN } from 'app/graphql/mutations/auth'
 import { ADD_USER, DELETE_USER, UPDATE_USER } from 'app/graphql/mutations/user'
 import { GET_USER, GET_USERS } from 'app/graphql/queries/user'
 import { AuthForm } from 'app/types/auth'
-import { redirect } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 export const useUser = () => {
+  const {push} = useRouter()
   const { data: user, error: errUser, loading: ldUser } = useQuery(GET_USER)
   const {
     data: allUsers,
@@ -20,10 +21,12 @@ export const useUser = () => {
 
   const handleLogin = async (formData: AuthForm) => {
     try {
+      console.log('formData', formData)
       await loginFn({
         variables: { email: formData.username, password: formData.password }
       })
-      if (loginVar.data['access_token']) redirect('/list')
+      console.log('loginVar', loginVar.data)
+      if (loginVar.data.login['access_token']) push('/list')
     } catch (error) {
       console.log(error)
     }
