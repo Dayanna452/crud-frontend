@@ -9,7 +9,7 @@ export const Input = ({
   ...props
 }: InputProps) => {
   return (
-    <div className='relative mb-3'>
+    <span className='relative mb-3'>
       <input
         id={id}
         type={type}
@@ -24,6 +24,6 @@ export const Input = ({
       >
         {label}
       </label>
-    </div>
+    </span>
   )
 }

@@ -2,7 +2,6 @@
 import { Button } from 'app/components/atoms/Button'
 import { Input } from 'app/components/atoms/Input/input.component'
 import { useUser } from 'app/hooks/useUser'
-import Link from 'next/link'
 import { useState } from 'react'
 
 export const LoginForm = () => {

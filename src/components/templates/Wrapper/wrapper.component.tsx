@@ -7,7 +7,7 @@ interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export const Wrapper = ({ children, ...props }: WrapperProps) => {
   return (
-    <div {...props}>
+    <div className='min-h-full relative' {...props}>
       <Navbar />
       {children}
       <Footer />
