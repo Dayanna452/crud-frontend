@@ -1,10 +1,12 @@
 "use client"
-import { useMutation, useQuery } from '@apollo/client'
-import { LOGIN } from 'app/graphql/mutations/auth'
-import { ADD_USER, DELETE_USER, UPDATE_USER } from 'app/graphql/mutations/user'
-import { GET_USER, GET_USERS } from 'app/graphql/queries/user'
-import { AuthForm } from 'app/types/auth'
 import { useRouter } from 'next/navigation'
+import { useMutation, useQuery } from '@apollo/client'
+
+import { AuthForm } from 'app/types/auth'
+import { LOGIN } from 'app/graphql/mutations/auth'
+import { GET_USER, GET_USERS } from 'app/graphql/queries/user'
+import { ADD_USER, DELETE_USER, UPDATE_USER } from 'app/graphql/mutations/user'
+import { setAccessToken } from 'app/utils/auth/validateAccessToken'
 
 export const useUser = () => {
   const {push} = useRouter()
@@ -21,12 +23,13 @@ export const useUser = () => {
 
   const handleLogin = async (formData: AuthForm) => {
     try {
-      console.log('formData', formData)
       await loginFn({
         variables: { email: formData.username, password: formData.password }
       })
-      console.log('loginVar', loginVar.data)
-      if (loginVar.data.login['access_token']) push('/list')
+      if (loginVar.data?.login['access_token']) {
+        setAccessToken(loginVar.data.login['access_token'])
+        push('/list')
+      }
     } catch (error) {
       console.log(error)
     }
